@@ -54,13 +54,13 @@ app.post('/signup', async (req, res) => {
     try {
         const { userName, email,mobileNumber, gender, password } = req.body
         // if(userName || email || mobileNumber || gender || password) { return }
-        const hashPassword = await hashPassword(password)
+        const hashPasswordNew = await hashPassword(password)
         const signUpData = {
             userName,
             email,
             mobileNumber,
             gender,
-            password: hashPassword
+            password: hashPasswordNew
         }
         // console.log(signUpData);
         const user = new Users({ ...signUpData })
@@ -207,9 +207,9 @@ app.put('/categories', authenticate, async(req, res) => {
     }
 })
 
-app.delete('/categories/:categoryId', authenticate, async(req, res) => {
+app.delete('/categories/:categoryId', authenticate, async(req, res) => {s
     try {
-        const categoryId = req.params.category
+        const categoryId = req.params.categoryId
         const deleteCategory = await Categories.findOneAndDelete({_id: categoryId, createdBy: req.user.userId})
         res.json({
             SUCCESS: true,
