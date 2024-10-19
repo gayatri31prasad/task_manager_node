@@ -8,6 +8,8 @@ const express = require('express'),
 app.use(bodyParser.json());
 //support parsing of application/x-www-form-urlencoded post data
 app.use(bodyParser.urlencoded({ extended: true }));
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.post('/login', async(req, res) => {
     try {        

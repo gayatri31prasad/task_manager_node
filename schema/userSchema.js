@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-// const url = 'mongodb://gayatri31prasad:mongo31gpv/task_management';
-// const url = "mongodb+srv://gayatri31prasad:mongo31gpv@cluster0.mongodb.net/task_management?retryWrites=true&w=majority";
-// mongodb+srv://<username>:<password>@firstcluster.4rc4s.mongodb.net/<dbname>?retryWrites=true&w=majority
-const url = "mongodb+srv://gayatri31prasad:mongo31gpv@cluster0.kxkkepd.mongodb.net/task_management";
+const dotenv = require('dotenv');
+dotenv.config();
+const url = process.env.MONGO_URL;
 
 mongoose.connect(url)
     .then((ans) => {
